@@ -1,8 +1,8 @@
 # Just put here IPv4 address of your VPN servers
 
-
 # For example:
 192.0.2.10
+
 # You can disable VPN and open this site to check if there is some captive portal present
 # http://http.rip
 54.165.87.188
