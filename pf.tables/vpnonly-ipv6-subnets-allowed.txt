@@ -1,0 +1,2 @@
+# Global multicast
+ff00::/8

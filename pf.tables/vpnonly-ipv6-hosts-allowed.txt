@@ -1,0 +1,4 @@
+# Just put here IPv6 address of your VPN servers
+
+# For example:
+2001:db8::10
