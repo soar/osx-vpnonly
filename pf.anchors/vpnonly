@@ -1,0 +1,25 @@
+# Full list of hardware (or bare) network interfaces
+# Just run `networksetup -listallhardwareports` to get them
+hw_ifs = "{" en0 en1 en2 en3 en4 en5 en6 en7 en8 en9 en10 "}"
+
+# Private networks
+table <ipv4-subnets-allowed> persist file "/etc/pf.tables/vpnonly-ipv4-subnets-allowed.txt"
+table <ipv6-subnets-allowed> persist file "/etc/pf.tables/vpnonly-ipv6-subnets-allowed.txt"
+
+# Allowed hosts
+table <ipv4-hosts-allowed> persist file "/etc/pf.tables/vpnonly-ipv4-hosts-allowed.txt"
+table <ipv6-hosts-allowed> persist file "/etc/pf.tables/vpnonly-ipv6-hosts-allowed.txt"
+
+# Addresses for ping packets
+table <ipv4-hosts-pingonly> persist file "/etc/pf.tables/vpnonly-ipv4-hosts-pingonly.txt"
+table <ipv6-hosts-pingonly> persist file "/etc/pf.tables/vpnonly-ipv6-hosts-pingonly.txt"
+
+# Block all outgoing traffic on any hardware interface
+block return out on $hw_ifs all no state
+
+# now allow traffic destined for allowed networks and VPN servers
+pass out on $hw_ifs from any to { <ipv4-subnets-allowed>, <ipv6-subnets-allowed>, <ipv4-hosts-allowed>, <ipv6-hosts-allowed> } no state
+
+# Allow ping to specified hosts
+pass out on $hw_ifs inet proto icmp from any to <ipv4-hosts-pingonly> icmp-type echoreq no state
+pass out on $hw_ifs inet6 proto ipv6-icmp from any to <ipv6-hosts-pingonly> icmp6-type echoreq no state
