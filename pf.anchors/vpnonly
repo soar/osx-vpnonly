@@ -19,6 +19,7 @@ block return out on $hw_ifs all no state
 
 # now allow traffic destined for allowed networks and VPN servers
 pass out on $hw_ifs from any to { <ipv4-subnets-allowed>, <ipv6-subnets-allowed>, <ipv4-hosts-allowed>, <ipv6-hosts-allowed> } no state
+pass out on $hw_ifs from { <ipv4-subnets-allowed>, <ipv6-subnets-allowed>, <ipv4-hosts-allowed>, <ipv6-hosts-allowed> } to any no state
 
 # Allow ping to specified hosts
 pass out on $hw_ifs inet proto icmp from any to <ipv4-hosts-pingonly> icmp-type echoreq no state
