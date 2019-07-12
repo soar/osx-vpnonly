@@ -2,7 +2,7 @@
 
 ## Original idea
 
-I found this amazing article: https://jomo.tv/security/pf-prevent-traffic-bypassing-vpn written by user **jomo** and just made some scripts for self-usage.
+I found [this amazing article](https://jomo.tv/security/pf-prevent-traffic-bypassing-vpn) written by user **jomo** and just made some scripts for self-usage.
 
 ## Usage
 
