@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 PF_CONF_FILE=/etc/pf.conf
 DIR=$(cd `dirname $0` && pwd)

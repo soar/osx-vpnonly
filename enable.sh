@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh -e
 
 function print_table() {
 	pfctl -a vpnonly -t ${1} -T show 2>/dev/null
